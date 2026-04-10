@@ -36,6 +36,14 @@ class Product:
     rating: int
     num_of_reviews: int
 
+    def __post_init__(self) -> None:
+        if self.price == "price":
+            return  # it's header
+
+        self.price = float(self.price)
+        self.rating = int(self.rating)
+        self.num_of_reviews = int(self.num_of_reviews)
+
 
 def get_driver() -> WebDriver:
     """Create and return a headless Chrome WebDriver instance."""

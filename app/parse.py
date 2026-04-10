@@ -37,12 +37,13 @@ class Product:
     num_of_reviews: int
 
     def __post_init__(self) -> None:
-        if self.price == "price":
-            return  # it's header
-
-        self.price = float(self.price)
-        self.rating = int(self.rating)
-        self.num_of_reviews = int(self.num_of_reviews)
+        try:
+            self.price = float(self.price)
+            self.rating = int(self.rating)
+            self.num_of_reviews = int(self.num_of_reviews)
+        except ValueError:
+            # это header — оставляем как есть
+            pass
 
 
 def get_driver() -> WebDriver:
